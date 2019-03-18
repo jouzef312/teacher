@@ -572,6 +572,28 @@ $(document).ready(function($){
       },
 
         editable: false,
+
+         select: function(start, end, date)  
+            {
+               
+$('#start').val(moment(start).format('HH:mm:ss'));
+        $('#end').val(moment(end).format('HH:mm:ss'));
+                $('#day').val(moment(start).format('DD'));
+
+                $('#myModal').modal('show');
+
+               
+            },
+  eventClick: function(calEvent, jsEvent, view) {
+        $('#start_time').val(moment(calEvent.start).format('HH:mm:ss'));
+        $('#finish_time').val(moment(calEvent.end).format('HH:mm:ss'));
+        $('#starter').val(moment(calEvent.start).format('HH:mm:ss'));
+        $('#ende').val(moment(calEvent.end).format('HH:mm:ss'));
+         $('#daye').val(moment(calEvent.start).format('DD'));
+
+        $('#classe').val(calEvent.title);
+        $('#editModal').modal();
+    },
             
           dayNamesShort: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       //Random default events

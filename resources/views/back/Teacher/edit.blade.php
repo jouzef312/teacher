@@ -542,9 +542,7 @@ desired effect
             
               
           
-               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-    add event
-  </button>
+             
   <br><br>
   <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-dialog-centered">
@@ -560,7 +558,6 @@ desired effect
         <div class="modal-body">
         <form action="{{ url('emploi') }}" enctype="multipart/form-data" class="form-horizontal" method="POST">
   {{ csrf_field() }}
-   {{ method_field('PATCH') }}
                     <div class="box-body">
                <div class="form-group">
                   <label class="col-sm-2 control-label">Select Class</label>
@@ -586,46 +583,16 @@ desired effect
                 </div>
                 </div>
              </div>
-             <div class="box-body">
-                  <div class="form-group">
-                  <label for="date" class="col-sm-2 control-label">Select day</label>
-                       <div class="col-sm-10">
-                   <select class="form-control " id="day"    name="day">
-                    
+                     <input type="hidden" class="form-control" id="day" name="day" placeholder="End">
 
-                    <option value="11">Monday</option>
-                    <option value="12">Tuesday</option>
-                    <option value="13">Wednesday</option>
-                    <option value="14">Thursday</option>
-                    <option value="15">Friday</option>
-                    <option value="16">Saturday</option>
-                    <option value="10">Sunday</option>
-                    
+           
 
-                   
-                  </select>
+                  
+                    <input type="hidden" class="form-control" id="start" name="start" placeholder="start">
+                
 
-                  </div>
-                </div>
-              </div>
-             <div class="box-body">
-                  <div class="form-group">
-                  <label for="start" class="col-sm-2 control-label">Start time</label>
-
-                  <div class="col-sm-10">
-                    <input type="time" class="form-control" id="start" name="start" placeholder="start">
-                  </div>
-                </div>
-              </div>
-  <div class="box-body">
-                  <div class="form-group">
-                  <label for="end" class="col-sm-2 control-label">End time</label>
-
-                  <div class="col-sm-10">
-                    <input type="time" class="form-control" id="end" name="end" placeholder="End">
-                  </div>
-                </div>
-              </div>
+                    <input type="hidden" class="form-control" id="end" name="end" placeholder="End">
+            
 
                        <div class="box-body">
                   <div class="form-group">
@@ -640,9 +607,7 @@ desired effect
 </div>
 
 
-<div class="box-footer">
-                <a href="javascript:history.back()" class="btn btn-default">Back</a> 
-              </div>
+
            
         
         
@@ -663,117 +628,7 @@ desired effect
 
 
 <br><br>
-  <div class="modal fade" id="Modal1">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">edit Event</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-        <form action="{{ url('emploi') }}" enctype="multipart/form-data" class="form-horizontal" method="POST">
-  {{ csrf_field() }}
-   {{ method_field('PATCH') }}
-                    <div class="box-body">
-               <div class="form-group">
-                  <label class="col-sm-2 control-label">Select Class</label>
-                  <div class="col-sm-10">
-                <input type="hidden" name="teacher" value="{{ $teacher->id }}">
-                  <select class="form-control " id="class"    name="class">
-                  @foreach ($classe as $class)
-                  @foreach ($sections as $sectionclase)
-                    @if($sectionclase->id == $class->section_id)
-                      
-                    @foreach ($levels as $levelclase)
-                    @if($levelclase->id == $class->level_id)
 
-                      <option value="{{ $class->id }}">{{ $levelclase->name.$sectionclase->name.$class->name }}</option>
-
-                  
-                    @endif
-                    @endforeach
-                    @endif
-                  @endforeach
-              @endforeach
-                  </select>
-                </div>
-                </div>
-             </div>
-             <div class="box-body">
-                  <div class="form-group">
-                  <label for="date" class="col-sm-2 control-label">Select day</label>
-                       <div class="col-sm-10">
-                   <select class="form-control " id="day"    name="day">
-                    
-
-                    <option value="11">Monday</option>
-                    <option value="12">Tuesday</option>
-                    <option value="13">Wednesday</option>
-                    <option value="14">Thursday</option>
-                    <option value="15">Friday</option>
-                    <option value="16">Saturday</option>
-                    <option value="10">Sunday</option>
-                    
-
-                   
-                  </select>
-
-                  </div>
-                </div>
-              </div>
-             <div class="box-body">
-                  <div class="form-group">
-                  <label for="start" class="col-sm-2 control-label">Start time</label>
-
-                  <div class="col-sm-10">
-                    <input type="time" class="form-control" id="start" name="start" placeholder="start">
-                  </div>
-                </div>
-              </div>
-  <div class="box-body">
-                  <div class="form-group">
-                  <label for="end" class="col-sm-2 control-label">End time</label>
-
-                  <div class="col-sm-10">
-                    <input type="time" class="form-control" id="end" name="end" placeholder="End">
-                  </div>
-                </div>
-              </div>
-
-                       <div class="box-body">
-                  <div class="form-group">
-                  <label for="color" class="col-sm-2 control-label">color</label>
-
-                  <div class="col-sm-10">
-                    <input type="color" class="form-control {{ $errors->has('color') ? 'is-invalid' : '' }}" name="color" id="color" placeholder="color" value="{{ old('color') }}">
-                     {!! $errors->first('color', '<div class="alert-validate" data-validate=":message">:message</div>') !!}
-                   
-                  </div>
-                </div>
-</div>
-
-
-<div class="box-footer">
-                <a href="javascript:history.back()" class="btn btn-default">Back</a> 
-              </div>
-           
-        
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-                          <button type="submit" class="btn btn-info pull-right">Add</button>
-
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-         </form>
-</div>
-      </div>
-    </div>
-  </div>
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -783,6 +638,8 @@ desired effect
                 
 <!--                 <input type="time" class="form-control" name="start_time" id="start_time">
  -->
+
+<br>
                 
           
 
@@ -816,34 +673,55 @@ desired effect
                   </div>
                 </div>
               </div>
+                <div class="box-body">
+                  <div class="form-group">
+                  <label for="color" class="col-sm-2 control-label">color</label>
 
+                  <div class="col-sm-10">
+                    <input type="color" class="form-control {{ $errors->has('color') ? 'is-invalid' : '' }}" name="color" id="color" placeholder="color" value="{{ old('color') }}">
+                     {!! $errors->first('color', '<div class="alert-validate" data-validate=":message">:message</div>') !!}
+                   
+                  </div>
+                </div>
+</div>
             
 
 
-<div class="box-footer">
-                <a href="javascript:history.back()" class="btn btn-default">Back</a> 
-              </div>
-           
+
         
         
         <!-- Modal footer -->
-        <div class="modal-footer">
+         <div class="col-sm-12">
                           <button type="submit" class="btn btn-info pull-right">edit</button>
+<br><br>
+         
+</div>
+ 
 
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
          </form>
-
+         <div class="modal-footer">
+<form action="{{ Route('emploi.destroy',$teacher->id) }}" enctype="multipart/form-data" class="form-horizontal" method="POST">
+  {{ csrf_field() }}
+  {{ method_field('DELETE') }}
+         <input type="hidden" id="dd" name="dd" >
+                 <input type="hidden" id="sd" name="sd" >
+                 <input type="hidden" id="ed" name="ed" >
+                   <div class="col-sm-12">
+                  <button type="submit"  class="btn  btn-danger pull-right">Delete</button>
+                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                 </div>
+               </form>
+                      </div>
   </div>
 
-
+     
 
 
 
            
         </div>
     </div>
-</div>
+
        
         <!-- /.col -->
        <!--  <div class="col-md-10"> -->
@@ -866,7 +744,7 @@ desired effect
 
 </div>
 
-
+</div>
     </section>
 
 
@@ -1053,29 +931,16 @@ $(document).ready(function($){
          @endforeach
 
       ],
-      select: function(start, end, allDay)  
+      select: function(start, end, date)  
             {
+               
+$('#start').val(moment(start).format('HH:mm:ss'));
+        $('#end').val(moment(end).format('HH:mm:ss'));
+                $('#day').val(moment(start).format('DD'));
+
                 $('#myModal').modal('show');
 
-                $( "#submit" ).click(function(e) {
-                    e.preventDefault();
-                    var title = $("#eventName").val();
-                    if(title)
-                    {
-                            calendar.fullCalendar('renderEvent',
-                                {
-                                    title: title,
-                                    start: start,
-                                    end: end,
-                                    //allDay: allDay
-                                },
-
-                        true // make the event "stick"
-                        );
-                    }   
-                    $('#myModal').modal('hide');
-                });
-                calendar.fullCalendar('unselect');  
+               
             },
   eventClick: function(calEvent, jsEvent, view) {
         $('#start_time').val(moment(calEvent.start).format('HH:mm:ss'));
@@ -1083,6 +948,9 @@ $(document).ready(function($){
         $('#starter').val(moment(calEvent.start).format('HH:mm:ss'));
         $('#ende').val(moment(calEvent.end).format('HH:mm:ss'));
          $('#daye').val(moment(calEvent.start).format('DD'));
+          $('#sd').val(moment(calEvent.start).format('HH:mm:ss'));
+        $('#ed').val(moment(calEvent.end).format('HH:mm:ss'));
+         $('#dd').val(moment(calEvent.start).format('DD'));
 
         $('#classe').val(calEvent.title);
         $('#editModal').modal();

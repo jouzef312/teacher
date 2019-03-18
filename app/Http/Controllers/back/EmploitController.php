@@ -65,7 +65,7 @@ class EmploitController extends Controller
             'end' => ['required'],
             
         ]);
-
+//dd($request);
         $emploi = new Emploit();
         if(Carbon::parse($request->start)->format('H:i:s') > Carbon::parse($request->end)->format('H:i:s') ){
   return back();
@@ -146,7 +146,6 @@ if(($key->teacher_id == $request->teacher AND $key->day == $request->day) OR ($k
         ]);
 
 
-
       if(Carbon::parse($request->start_time)->format('H:i:s') > Carbon::parse($request->finish_time)->format('H:i:s') ){
   return back();
         }
@@ -180,7 +179,7 @@ if(($key->teacher_id == $id AND $key->day == $request->daye) OR ($key->class_id 
 
  $emploi->start = $request->start_time;
         $emploi->end = $request->finish_time;
-      
+       $emploi->color = $request->color;
     
         $emploi->save();
          return back();
@@ -195,8 +194,18 @@ if(($key->teacher_id == $id AND $key->day == $request->daye) OR ($key->class_id 
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        //
+        
+
+    $emploi = Emploit::where('day',$request->dd)
+                    ->where('start',$request->sd)
+                    ->where('end',$request->ed)
+                    ->where('teacher_id',$id)
+                    ->first();
+
+    $emploi->delete();
+                 return back();
+            
     }
 }

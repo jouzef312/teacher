@@ -12,9 +12,7 @@
             
               
           
-               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-    add event
-  </button>
+             
   <br><br>
   <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-dialog-centered">
@@ -144,6 +142,12 @@
   </div>
 
       
+
+
+
+   
+
+
        
         <!-- /.col -->
        <!--  <div class="col-md-10"> -->
