@@ -15,9 +15,9 @@ class CreateLevelSectionTable extends Migration
     {
         Schema::create('level_section', function (Blueprint $table) {
              $table->bigIncrements('id');
-            $table->integer('level_id')->unsigned();
+            $table->unsignedBigInteger('level_id');
             $table->foreign('level_id')->references('id')->on('levels');
-             $table->integer('section_id')->unsigned();
+             $table->unsignedBigInteger('section_id')->unsigned();
             $table->foreign('section_id')->references('id')->on('sections');
            
                $table->timestamps();         });

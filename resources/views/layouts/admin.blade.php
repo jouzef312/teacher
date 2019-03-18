@@ -19,6 +19,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Ionicons -->
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<!-- <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+ --><!-- jQuery UI 1.11.4 -->
+<script src="../bower_components/jquery-ui/jquery-ui.min.js"></script>
+<!-- Slimscroll -->
+<script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../bower_components/fastclick/lib/fastclick.js"></script>
+  <!-- fullCalendar -->
+ 
+  <link rel="stylesheet" href="../bower_components/fullcalendar/dist/fullcalendar.min.css">
+  <link rel="stylesheet" href="../bower_components/fullcalendar/dist/fullcalendar.print.min.css" media="print">
   <!-- Theme style -->
   <link rel="stylesheet" href={{ asset("dist/css/AdminLTE.min.css") }}>
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -43,22 +56,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
  
 
   <style type="text/css">
-    .modal {
-       width: 50%;
-       height: 100px;
-       margin:0 auto;
-       display:table;
-       position: absolute;
-       left: 0;
-       right:0;
-       top: -400%; 
-      border:1px solid;
-       -webkit-transform:translateY(-50%);
-       -moz-transform:translateY(-50%);
-       -ms-transform:translateY(-50%);
-       -o-transform:translateY(-50%);
-       transform:translateY(-50%);
-    }
+   
     .table-sortable tbody tr {
     cursor: move;
 }
@@ -242,7 +240,20 @@ desired effect
            
           </ul>
         </li>
-
+  <li class="treeview">
+          <a href="{{ route('teacher.index') }}">
+            <i class="fa fa-group"></i>
+            <span>Teacher</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('teacher.index') }}"><i class="fa  fa-list"></i> Liste Teacher</a></li>
+         <li><a href="{{ route('teacher.create') }}"><i class="fa fa-plus-square"></i> Create Teacher</a></li>
+           
+          </ul>
+        </li>
 
 <li class="treeview">
           <a href="{{ route('annee.index') }}">
@@ -297,12 +308,65 @@ desired effect
             </span>
           </a>
           <ul class="treeview-menu">
-<!--             <li><a href="{{ route('class.index') }}"><i class="fa  fa-list"></i> Liste Class</a></li>
- -->         <li><a href="{{ route('class.create') }}"><i class="fa fa-plus-square"></i> Create Class</a></li>
+            <li><a href="{{ route('class.index') }}"><i class="fa  fa-list"></i> Liste Class</a></li>
+         <li><a href="{{ route('class.create') }}"><i class="fa fa-plus-square"></i> Create Class</a></li>
            
           </ul>
         </li>
 
+
+        <li class="treeview">
+          <a href="{{ route('institut.index') }}">
+            <i class="fa fa-cubes"></i>
+            <span>Instutit</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('institut.index') }}"><i class="fa  fa-list"></i> Liste Instutit</a></li>
+         <li><a href="{{ route('institut.create') }}"><i class="fa fa-plus-square"></i> Create Instutit</a></li>
+           
+          </ul>
+        </li>
+
+
+ <li class="treeview">
+          <a href="{{ route('formation.index') }}">
+            <i class="fa fa-cubes"></i>
+            <span>Formation</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('formation.index') }}"><i class="fa  fa-list"></i> Liste Formation</a></li>
+           <li><a href="{{ route('formation.create') }}"><i class="fa fa-plus-square"></i> Create Formation</a></li>
+
+          </ul>
+        </li>
+         <li class="treeview">
+          <a href="{{ route('visite.index') }}">
+            <i class="fa fa-cubes"></i>
+            <span>Visite</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('visite.index') }}"><i class="fa  fa-list"></i> Liste Visite</a></li>
+           <li><a href="{{ route('visite.create') }}"><i class="fa fa-plus-square"></i> Create Visite</a></li>     
+          </ul>
+        </li>
+ 
+    <li class="treeview">
+         
+            
+            <span><li><a href="{{ route('emploi.create') }}"><i class="fa  fa-list"></i> Liste emploi</a></li></span>
+          
+            </span>
+         
+        
  
 
 
@@ -317,7 +381,7 @@ desired effect
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    
+   <section>
 
       <!--------------------------
         | Your Page Content Here |
@@ -375,7 +439,6 @@ desired effect
   immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
-<!-- ./wrapper -->
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <!-- jQuery 3 -->
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
@@ -385,6 +448,25 @@ desired effect
 <script src={{ asset("dist/js/adminlte.min.js") }}></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
+<script src="../bower_components/moment/moment.js"></script>
+<script src="../bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+
+
+<!-- jQuery 3 -->
+<!-- Bootstrap 3.3.7 -->
+<!-- <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+ --><!-- jQuery UI 1.11.4 -->
+<script src="../bower_components/jquery-ui/jquery-ui.min.js"></script>
+<!-- Slimscroll -->
+<script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<!-- AdminLTE for demo purposes -->
+<script src="../dist/js/demo.js"></script>
+<!-- fullCalendar -->
+<script src="../bower_components/moment/moment.js"></script>
+<script src="../bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
 <!-- REQUIRED JS SCRIPTS -->
 <script type="text/javascript">
 
@@ -401,7 +483,7 @@ desired effect
             $('#level').empty(); 
             
             $.each(data, function(key, element) {
-                $('#level').append("<option value='" + key +"'>" + element.name + "</option>");
+                $('#level').append("<option value='" + element.id +"'>" + element.name + "</option>");
             });
         });
     });
@@ -418,6 +500,174 @@ $(document).ready(function($){
 });
 </script>
 
+<!-- Page specific script -->
+<script>
+  $(function () {
+
+    /* initialize the external events
+     -----------------------------------------------------------------*/
+    function init_events(ele) {
+      ele.each(function () {
+
+        // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+        // it doesn't need to have a start or end
+        var eventObject = {
+          title: $.trim($(this).text()) // use the element's text as the event title
+        }
+
+        // store the Event Object in the DOM element so we can get to it later
+        $(this).data('eventObject', eventObject)
+
+        // make the event draggable using jQuery UI
+        $(this).draggable({
+          zIndex        : 10,
+          revert        : true, // will cause the event to go back to its
+          revertDuration: 0  //  original position after the drag
+        })
+
+      })
+    }
+
+    init_events($('#external-events div.external-event'))
+
+    /* initialize the calendar
+     -----------------------------------------------------------------*/
+    //Date for the calendar events (dummy data)
+    var date = new Date()
+    var d    = date.getDate(),
+        m    = date.getMonth(),
+        y    = date.getFullYear()
+    $('#calendar').fullCalendar({
+       allDaySlot: false,
+           header    : {
+        left  : '',
+        center: 'emploit',
+        right : ''
+      }, 
+      displayEventTime : false,
+        businessHours: {
+         dow: [0, 1, 2, 3, 4, 5, 6, 7], // Monday - Thursday
+         start: '08:00', // start time (8am)
+         end: '18:00', // end time (5pm)
+     },
+
+   
+      
+    defaultView: 'basicWeek',
+
+     slotLabelFormat: "HH:mm",
+       timeFormat: 'HH:mm',
+        eventOverlap: false,
+         selectHelper: true,
+          selectable: true,
+          select: function(start, end) {
+        $.getScript('/events/new', function() {
+          $('#event_date_range').val(moment(start).format("MM/DD/YYYY HH:mm") + ' - ' + moment(end).format("MM/DD/YYYY HH:mm"))
+          date_range_picker();
+          $('.start_hidden').val(moment(start).format('YYYY-MM-DD HH:mm'));
+          $('.end_hidden').val(moment(end).format('YYYY-MM-DD HH:mm'));
+        });
+
+        calendar.fullCalendar('unselect');
+      },
+
+        editable: false,
+            
+          dayNamesShort: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      //Random default events
+      events    : [
+      
+      @yield('event') 
+
+      ],
+       
+    //editable  : false,
+       views: {
+                basic: {
+                    columnFormat: 'ddd'
+                },
+                agenda: {
+                    columnFormat: 'ddd'
+                },
+                week: {
+                    columnFormat: 'ddd'
+                },
+                day: {
+                    columnFormat: 'ddd'
+                }
+            },
+
+      droppable : false, // this allows things to be dropped onto the calendar !!!
+      drop      : function (date, allDay) { // this function is called when something is dropped
+
+        // retrieve the dropped element's stored Event Object
+        var originalEventObject = $(this).data('eventObject')
+
+        // we need to copy it, so that multiple events don't have a reference to the same object
+        var copiedEventObject = $.extend({}, originalEventObject)
+
+        // assign it the date that was reported
+      //  copiedEventObject.start           = new Date()
+        copiedEventObject.allDay          = allDay
+        copiedEventObject.backgroundColor = $(this).css('background-color')
+        copiedEventObject.borderColor     = $(this).css('border-color')
+
+        // render the event on the calendar
+        // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+        $('#calendar').fullCalendar('renderEvent', copiedEventObject, true)
+
+        // is the "remove after drop" checkbox checked?
+        if ($('#drop-remove').is(':checked')) {
+          // if so, remove the element from the "Draggable Events" list
+          $(this).remove()
+        }
+
+      }
+    })
+ 
+
+$('#calendar').fullCalendar('changeView',  'agenda', {
+  start: '2019-03-10',
+  end: '2019-03-17'
+});
+
+    /* ADDING EVENTS */
+    var currColor = '#3c8dbc' //Red by default
+    //Color chooser button
+    var colorChooser = $('#color-chooser-btn')
+    $('#color-chooser > li > a').click(function (e) {
+      e.preventDefault()
+      //Save color
+      currColor = $(this).css('color')
+      //Add color effect to button
+      $('#add-new-event').css({ 'background-color': currColor, 'border-color': currColor })
+    })
+    $('#add-new-event').click(function (e) {
+      e.preventDefault()
+      //Get value and make sure it is not null
+      var val = $('#new-event').val()
+      if (val.length == 0) {
+        return
+      }
+
+      //Create events
+      var event = $('<div />')
+      event.css({
+        'background-color': currColor,
+        'border-color'    : currColor,
+        'color'           : '#fff'
+      }).addClass('external-event')
+      event.html(val)
+      $('#external-events').prepend(event)
+
+      //Add draggable funtionality
+      init_events(event)
+
+      //Remove event from text input
+      $('#new-event').val('')
+    })
+  })
+</script>
 
 
 

@@ -5,11 +5,11 @@
  <div class="col-md-10">
 <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Edit Section</h3>
+              <h3 class="box-title">Edit Class</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-         <form action="{{ Route('section.update',$section->id) }}" class="form-horizontal" method="POST">
+         <form action="{{ Route('class.update',$class->id) }}" class="form-horizontal" method="POST">
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
               <div class="box-body">
@@ -17,25 +17,38 @@
                   <label for="name" class="col-sm-2 control-label">Name</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" name="name" value="{{ $section->name }}">
+                    <input type="text" class="form-control" id="name" name="name" value="{{ $class->name }}">
                   </div>
                 </div>
 
-          <div class="box-body">
+        <div class="box-body">
                <div class="form-group">
-                  <label class="col-sm-2 control-label">Select Level</label>
+                  <label class="col-sm-2 control-label">Select Section</label>
                   <div class="col-sm-10">
                 
-                  <select class="form-control " id="level[]"  multiple="multiple"  name="level[]">
-                     @foreach ($levels as $level)
-                    <option value="{{ $level->id }}">{{ $level->name }}</option>
+                  <select class="form-control dynamic " id="section"    name="section">
+                     @foreach ($sections as $section)
+                    <option value="{{ $section->id }}">{{ $section->name }}</option>
                     
 
                     @endforeach
                   </select>
                 </div>
                 </div>
-</div>     
+</div>
+
+
+ <div class="box-body">
+               <div class="form-group">
+                  <label class="col-sm-2 control-label">Select Level</label>
+                  <div class="col-sm-10">
+                
+                  <select class="form-control " id="level"    name="level">
+                    <option>Please choose section first</option>
+                  </select>
+                </div>
+                </div>
+</div>  
 
                 
               <div class="box-footer">

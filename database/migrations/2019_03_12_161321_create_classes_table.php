@@ -15,6 +15,12 @@ class CreateClassesTable extends Migration
     {
         Schema::create('classes', function (Blueprint $table) {
             $table->bigIncrements('id');
+             $table->string('name');
+
+             $table->unsignedBigInteger('level_id')->unsigned();
+            $table->foreign('level_id')->references('id')->on('levels');
+             $table->unsignedBigInteger('section_id')->unsigned();
+            $table->foreign('section_id')->references('id')->on('sections');
             $table->timestamps();
         });
     }

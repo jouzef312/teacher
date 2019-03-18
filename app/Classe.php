@@ -23,6 +23,6 @@ class Classe extends Model
      public function Levels()
     {
         //
-        return $this->belongsTo('App\Levels');
+        return $this->belongsTo('App\Level');
     }
 }
