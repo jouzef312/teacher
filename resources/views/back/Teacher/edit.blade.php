@@ -890,13 +890,14 @@ $(document).ready(function($){
         center: '',
         right : ''
       }, 
-      displayEventTime : false,
+      displayEventTime : true,
         businessHours: {
          dow: [0, 1, 2, 3, 4, 5, 6, 7], // Monday - Thursday
          start: '08:00', // start time (8am)
          end: '18:00', // end time (5pm)
      },
-
+minTime: "08:00:00",
+            maxTime: "18:00:00",
    
       
     defaultView: 'basicWeek',

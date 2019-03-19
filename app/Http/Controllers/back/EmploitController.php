@@ -74,13 +74,27 @@ $emplois = Emploit::All();
 foreach ($emplois as $key ) {
 if(($key->teacher_id == $request->teacher AND $key->day == $request->day) OR ($key->class_id == $request->class AND $key->day == $request->day)){
 
-    if((Carbon::parse($request->start)->format('H:i:s') >= Carbon::parse($key->start)->format('H:i:s') ) AND (Carbon::parse($request->start)->format('H:i:s') <= Carbon::parse($key->end)->format('H:i:s'))){
-      
-       if((Carbon::parse($request->end)->format('H:i:s') >= Carbon::parse($key->start)->format('H:i:s') ) AND (Carbon::parse($request->end)->format('H:i:s') <= Carbon::parse($key->end)->format('H:i:s'))){
+    if((Carbon::parse($request->start)->format('H:i:s') > Carbon::parse($key->start)->format('H:i:s') ) AND (Carbon::parse($request->start)->format('H:i:s') < Carbon::parse($key->end)->format('H:i:s'))){
+       
+       
          return back();
       
     }
+    if((Carbon::parse($request->end)->format('H:i:s') > Carbon::parse($key->start)->format('H:i:s') ) AND (Carbon::parse($request->end)->format('H:i:s') < Carbon::parse($key->end)->format('H:i:s'))){
+           return back();
     }
+
+   if((Carbon::parse($request->start)->format('H:i:s') <= Carbon::parse($key->start)->format('H:i:s') ) AND (Carbon::parse($request->end)->format('H:i:s') >= Carbon::parse($key->end)->format('H:i:s'))){
+       
+      
+         return back();
+      
+   
+    }
+
+
+
+
 }
 }
  
